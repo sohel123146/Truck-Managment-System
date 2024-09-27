@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import Trucks from './Trucks';
 import BasicModal from './BasicModal';
 import FIlteringTrucks from './FilteringTrucks';
@@ -150,41 +150,53 @@ const AddTruck = () => {
   ]);
 
   // Function to add a new truck
-  const addTruck = (newTruck) => {
+  const addTruck = useCallback((newTruck) => {
     setTrucks([...trucks, newTruck]);
-  };
+  }, []);
 
   // funtion to upldate the truck
-  const updateTruck = (updatedTruck) => {
+  const updateTruck = useCallback((updatedTruck) => {
     setTrucks(
       trucks.map((truck) =>
         truck.truckId === updatedTruck.truckId ? updatedTruck : truck
       )
     );
-  };
+  }, [trucks]);
+
 
   //function to open the modal with selected truck to pre-fill the form
-  const handleEdit = (truck) => {
+  const handleEdit = useCallback((truck) => {
     setSelectedTruck(truck);
     setIsEditing(true);
     setShowModal(true);
-  };
+  },[]);
 
   //thos fucntion for Active , Maintenance , Out Of Service
-  const handleFilterChange = (status) => {
+  const handleFilterChange = useCallback((status) => {
     setTruckStatus(status);
-  };
+  },[]);
 
   //this fucntion for category and search results the results stored in filteredTrucks array
-  const handleSearchResults = (filteredTrucks) => {
+  const handleSearchResults = useCallback((filteredTrucks) => {
     setFilteredResults(filteredTrucks);
-  };
+  }, [])
+
+
+  const handleOpenModel = useCallback(() => {
+    setShowModal(true)
+    setIsEditing(false)
+    setSelectedTruck(null)
+  }, [])
+
 
   // Apply status filter first
-  const trucksFilteredByStatus =
-    truckStatus === 'All Status'
+  const trucksFilteredByStatus = useMemo(() => {
+    return truckStatus === 'All Status'
       ? trucks
-      : trucks.filter((truck) => truck.status === truckStatus);
+      : trucks.filter((truck) => {
+        return truck.status === truckStatus
+      });
+  }, [trucks, truckStatus])
 
   // this function is a combination of search filter feature and status filter feature.
   const trucksToDisplay =
@@ -193,7 +205,7 @@ const AddTruck = () => {
   return (
     <>
       <div className="filtering-options">
-        <div onClick={() => setShowModal(true)} className="truck-add-btn">
+        <div onClick={handleOpenModel} className="truck-add-btn">
           + Add New Truck
         </div>
 
