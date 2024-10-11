@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dropdown } from 'rsuite';
 import 'rsuite/dist/rsuite.css';
+import { useDebounce } from 'use-debounce';
 
 const SearchTruck = ({ trucks, onFilteredResults }) => {
   const [searchCategory, setSearchCategory] = useState('Model');
   const [searchQuery, setSearchQuery] = useState('');
+  const [value] = useDebounce(searchQuery, 1000);
 
   // Handle dropdown category change
   const handleCategoryChange = (eventKey) => {
@@ -14,32 +16,33 @@ const SearchTruck = ({ trucks, onFilteredResults }) => {
 
   // Handle search input change
   const handleSearchInputChange = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
+    setSearchQuery(e.target.value); // Update searchQuery immediately on change
+  };
 
-    // Filter the trucks based on the selected category and search query
+  // Filter trucks based on debounced value
+  useEffect(() => {
     const filteredTrucks = trucks.filter((truck) => {
+      const query = value.toLowerCase();
+
       if (searchCategory === 'Model') {
-        return truck.model.toLowerCase().includes(query.toLowerCase());
+        return truck.model.toLowerCase().includes(query);
       } else if (searchCategory === 'Location') {
-        return truck.location.toLowerCase().includes(query.toLowerCase());
+        return truck.location.toLowerCase().includes(query);
       } else if (searchCategory === 'Capacity') {
-        return truck.capacity.toLowerCase().includes(query.toLowerCase());
+        return truck.capacity.toLowerCase().includes(query);
       } else if (searchCategory === 'FuelLevel') {
-        return truck.fuelLevel.toLowerCase().includes(query.toLowerCase());
+        return truck.fuelLevel.toLowerCase().includes(query);
       } else if (searchCategory === 'LastMaintenance') {
-        return truck.lastMaintenance
-          .toLowerCase()
-          .includes(query.toLowerCase());
+        return truck.lastMaintenance.toLowerCase().includes(query);
       } else if (searchCategory === 'Status') {
-        return truck.status.toLowerCase().includes(query.toLowerCase());
+        return truck.status.toLowerCase().includes(query);
       }
       return false;
     });
 
     // Pass the filtered results to the parent component
     onFilteredResults(filteredTrucks);
-  };
+  }, [value, searchCategory, trucks, onFilteredResults]);
 
   return (
     <div className="search-container">
@@ -50,9 +53,7 @@ const SearchTruck = ({ trucks, onFilteredResults }) => {
           <Dropdown.Item eventKey="Location">Location</Dropdown.Item>
           <Dropdown.Item eventKey="Capacity">Capacity</Dropdown.Item>
           <Dropdown.Item eventKey="FuelLevel">Fuel Level</Dropdown.Item>
-          <Dropdown.Item eventKey="LastMaintenance">
-            Last Maintenance
-          </Dropdown.Item>
+          <Dropdown.Item eventKey="LastMaintenance">Last Maintenance</Dropdown.Item>
         </Dropdown>
       </div>
       <div className="search">

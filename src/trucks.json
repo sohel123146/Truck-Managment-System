@@ -1,0 +1,138 @@
+[
+    {
+      "truckId": 1,
+      "model": "Volvo FH16",
+      "status": "Active",
+      "location": "New York",
+      "capacity": "20 tons",
+      "fuelLevel": "75%",
+      "lastMaintenance": "2024-08-10"
+    },
+    {
+      "truckId": 2,
+      "model": "Scania R500",
+      "status": "Maintenance",
+      "location": "Los Angeles",
+      "capacity": "18 tons",
+      "fuelLevel": "40%",
+      "lastMaintenance": "2024-09-05"
+    },
+    {
+      "truckId": 3,
+      "model": "Mercedes-Benz Actros",
+      "status": "Out Of Service",
+      "location": "Chicago",
+      "capacity": "22 tons",
+      "fuelLevel": "15%",
+      "lastMaintenance": "2024-07-22"
+    },
+    {
+      "truckId": 4,
+      "model": "DAF XF",
+      "status": "Active",
+      "location": "Dallas",
+      "capacity": "25 tons",
+      "fuelLevel": "60%",
+      "lastMaintenance": "2024-08-18"
+    },
+    {
+      "truckId": 5,
+      "model": "MAN TGX",
+      "status": "Maintenance",
+      "location": "Houston",
+      "capacity": "30 tons",
+      "fuelLevel": "85%",
+      "lastMaintenance": "2024-09-10"
+    },
+    {
+      "truckId": 6,
+      "model": "Benz 2024",
+      "status": "Out Of Service",
+      "location": "Texas",
+      "capacity": "60 tons",
+      "fuelLevel": "85%",
+      "lastMaintenance": "2023-09-10"
+    },
+    {
+      "truckId": 7,
+      "model": "Ford F-150",
+      "status": "Active",
+      "location": "Los Angeles, CA",
+      "capacity": "10000 lbs",
+      "fuelLevel": "80%",
+      "lastMaintenance": "2024-06-15"
+    },
+    {
+      "truckId": 8,
+      "model": "Chevrolet Silverado",
+      "status": "Maintenance",
+      "location": "Houston, TX",
+      "capacity": "9500 lbs",
+      "fuelLevel": "60%",
+      "lastMaintenance": "2024-07-22"
+    },
+    {
+      "truckId": 9,
+      "model": "Ram 1500",
+      "status": "Active",
+      "location": "Chicago, IL",
+      "capacity": "9800 lbs",
+      "fuelLevel": "45%",
+      "lastMaintenance": "2024-05-30"
+    },
+    {
+      "truckId": 10,
+      "model": "Toyota Tundra",
+      "status": "Out Of Service",
+      "location": "Miami, FL",
+      "capacity": "8500 lbs",
+      "fuelLevel": "Full",
+      "lastMaintenance": "2024-04-20"
+    },
+    {
+      "truckId": 11,
+      "model": "GMC Sierra 1500",
+      "status": "Active",
+      "location": "Phoenix, AZ",
+      "capacity": "9000 lbs",
+      "fuelLevel": "25%",
+      "lastMaintenance": "2024-06-05"
+    },
+    {
+      "truckId": 12,
+      "model": "Nissan Titan",
+      "status": "Maintenance",
+      "location": "New York, NY",
+      "capacity": "9400 lbs",
+      "fuelLevel": "70%",
+      "lastMaintenance": "2024-08-10"
+    },
+    {
+      "truckId": 13,
+      "model": "Honda Ridgeline",
+      "status": "Out Of Service",
+      "location": "San Francisco, CA",
+      "capacity": "7500 lbs",
+      "fuelLevel": "50%",
+      "lastMaintenance": "2024-07-18"
+    },
+    {
+      "truckId": 14,
+      "model": "Isuzu NPR",
+      "status": "Active",
+      "location": "Las Vegas, NV",
+      "capacity": "12000 lbs",
+      "fuelLevel": "65%",
+      "lastMaintenance": "2024-08-01"
+    },
+    {
+      "truckId": 15,
+      "model": "Mack Anthem",
+      "status": "Maintenance",
+      "location": "Denver, CO",
+      "capacity": "30 tons",
+      "fuelLevel": "35%",
+      "lastMaintenance": "2024-07-28"
+    }
+  ]
+  
